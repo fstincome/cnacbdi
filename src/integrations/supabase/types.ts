@@ -563,6 +563,93 @@ export type Database = {
           },
         ]
       }
+      details_paie: {
+        Row: {
+          allocations_familiales: number
+          created_at: string
+          deductions: number
+          employe_id: string
+          id: string
+          indemnite_deplacement: number
+          indemnite_logement: number
+          inss_3: number
+          inss_4: number
+          inss_6: number
+          ipr: number
+          legacy_id: string | null
+          montant_supporte: number
+          mutuelle_4: number
+          mutuelle_6: number
+          revenu_net_imposable: number
+          salaire_base: number
+          salaire_brut: number
+          salaire_id: string
+          salaire_net: number
+          updated_at: string
+        }
+        Insert: {
+          allocations_familiales?: number
+          created_at?: string
+          deductions?: number
+          employe_id: string
+          id?: string
+          indemnite_deplacement?: number
+          indemnite_logement?: number
+          inss_3?: number
+          inss_4?: number
+          inss_6?: number
+          ipr?: number
+          legacy_id?: string | null
+          montant_supporte?: number
+          mutuelle_4?: number
+          mutuelle_6?: number
+          revenu_net_imposable?: number
+          salaire_base?: number
+          salaire_brut?: number
+          salaire_id: string
+          salaire_net?: number
+          updated_at?: string
+        }
+        Update: {
+          allocations_familiales?: number
+          created_at?: string
+          deductions?: number
+          employe_id?: string
+          id?: string
+          indemnite_deplacement?: number
+          indemnite_logement?: number
+          inss_3?: number
+          inss_4?: number
+          inss_6?: number
+          ipr?: number
+          legacy_id?: string | null
+          montant_supporte?: number
+          mutuelle_4?: number
+          mutuelle_6?: number
+          revenu_net_imposable?: number
+          salaire_base?: number
+          salaire_brut?: number
+          salaire_id?: string
+          salaire_net?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "details_paie_employe_id_fkey"
+            columns: ["employe_id"]
+            isOneToOne: false
+            referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "details_paie_salaire_id_fkey"
+            columns: ["salaire_id"]
+            isOneToOne: true
+            referencedRelation: "salaires"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       dossiers_archives: {
         Row: {
           actif: boolean
@@ -795,6 +882,66 @@ export type Database = {
             columns: ["responsable_id"]
             isOneToOne: false
             referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      fiches_paie_mensuelles: {
+        Row: {
+          annee: number
+          auteur_id: string | null
+          auteur_nom: string | null
+          created_at: string
+          document_url: string | null
+          id: string
+          legacy_id: string | null
+          modificateur_id: string | null
+          modificateur_nom: string | null
+          mois: number
+          statut: string
+          updated_at: string
+        }
+        Insert: {
+          annee: number
+          auteur_id?: string | null
+          auteur_nom?: string | null
+          created_at?: string
+          document_url?: string | null
+          id?: string
+          legacy_id?: string | null
+          modificateur_id?: string | null
+          modificateur_nom?: string | null
+          mois: number
+          statut?: string
+          updated_at?: string
+        }
+        Update: {
+          annee?: number
+          auteur_id?: string | null
+          auteur_nom?: string | null
+          created_at?: string
+          document_url?: string | null
+          id?: string
+          legacy_id?: string | null
+          modificateur_id?: string | null
+          modificateur_nom?: string | null
+          mois?: number
+          statut?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fiches_paie_mensuelles_auteur_id_fkey"
+            columns: ["auteur_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fiches_paie_mensuelles_modificateur_id_fkey"
+            columns: ["modificateur_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
         ]
@@ -1266,45 +1413,64 @@ export type Database = {
       }
       salaires: {
         Row: {
+          auteur_id: string | null
           avance: number | null
           created_at: string | null
           employe_id: string | null
+          etat_civil: string
           id: string
           mois: string | null
           montant_brut: number | null
           montant_net: number | null
+          nombre_enfants: number
           primes: number | null
           retenues: number | null
+          salaire_base: number
           statut: string | null
           updated_at: string | null
         }
         Insert: {
+          auteur_id?: string | null
           avance?: number | null
           created_at?: string | null
           employe_id?: string | null
+          etat_civil?: string
           id?: string
           mois?: string | null
           montant_brut?: number | null
           montant_net?: number | null
+          nombre_enfants?: number
           primes?: number | null
           retenues?: number | null
+          salaire_base?: number
           statut?: string | null
           updated_at?: string | null
         }
         Update: {
+          auteur_id?: string | null
           avance?: number | null
           created_at?: string | null
           employe_id?: string | null
+          etat_civil?: string
           id?: string
           mois?: string | null
           montant_brut?: number | null
           montant_net?: number | null
+          nombre_enfants?: number
           primes?: number | null
           retenues?: number | null
+          salaire_base?: number
           statut?: string | null
           updated_at?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "salaires_auteur_id_fkey"
+            columns: ["auteur_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "salaires_employe_id_fkey"
             columns: ["employe_id"]
