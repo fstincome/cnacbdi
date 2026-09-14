@@ -181,13 +181,16 @@ export type Database = {
           cooperative_id: string | null
           created_at: string
           date_creation: string | null
+          email: string | null
           id: string
           legacy_id: number | null
           nbre_membres: number
           nom: string
           responsable_id: string | null
           statut: string
+          telephone: string | null
           updated_at: string
+          user_id: string | null
         }
         Insert: {
           colline_id?: string | null
@@ -195,13 +198,16 @@ export type Database = {
           cooperative_id?: string | null
           created_at?: string
           date_creation?: string | null
+          email?: string | null
           id?: string
           legacy_id?: number | null
           nbre_membres?: number
           nom: string
           responsable_id?: string | null
           statut?: string
+          telephone?: string | null
           updated_at?: string
+          user_id?: string | null
         }
         Update: {
           colline_id?: string | null
@@ -209,13 +215,16 @@ export type Database = {
           cooperative_id?: string | null
           created_at?: string
           date_creation?: string | null
+          email?: string | null
           id?: string
           legacy_id?: number | null
           nbre_membres?: number
           nom?: string
           responsable_id?: string | null
           statut?: string
+          telephone?: string | null
           updated_at?: string
+          user_id?: string | null
         }
         Relationships: [
           {
@@ -476,42 +485,51 @@ export type Database = {
           contact: string | null
           created_at: string
           date_creation: string | null
+          email: string | null
           id: string
           legacy_id: number | null
           nbre_membres: number
           nom: string
           responsable_id: string | null
           statut: string
+          telephone: string | null
           union_id: string | null
           updated_at: string
+          user_id: string | null
           zone_id: string | null
         }
         Insert: {
           contact?: string | null
           created_at?: string
           date_creation?: string | null
+          email?: string | null
           id?: string
           legacy_id?: number | null
           nbre_membres?: number
           nom: string
           responsable_id?: string | null
           statut?: string
+          telephone?: string | null
           union_id?: string | null
           updated_at?: string
+          user_id?: string | null
           zone_id?: string | null
         }
         Update: {
           contact?: string | null
           created_at?: string
           date_creation?: string | null
+          email?: string | null
           id?: string
           legacy_id?: number | null
           nbre_membres?: number
           nom?: string
           responsable_id?: string | null
           statut?: string
+          telephone?: string | null
           union_id?: string | null
           updated_at?: string
+          user_id?: string | null
           zone_id?: string | null
         }
         Relationships: [
@@ -653,6 +671,7 @@ export type Database = {
           contact: string | null
           created_at: string
           date_creation: string | null
+          email: string | null
           id: string
           legacy_id: number | null
           nbre_associations: number
@@ -662,12 +681,15 @@ export type Database = {
           province_id: string | null
           responsable_id: string | null
           statut: string
+          telephone: string | null
           updated_at: string
+          user_id: string | null
         }
         Insert: {
           contact?: string | null
           created_at?: string
           date_creation?: string | null
+          email?: string | null
           id?: string
           legacy_id?: number | null
           nbre_associations?: number
@@ -677,12 +699,15 @@ export type Database = {
           province_id?: string | null
           responsable_id?: string | null
           statut?: string
+          telephone?: string | null
           updated_at?: string
+          user_id?: string | null
         }
         Update: {
           contact?: string | null
           created_at?: string
           date_creation?: string | null
+          email?: string | null
           id?: string
           legacy_id?: number | null
           nbre_associations?: number
@@ -692,7 +717,9 @@ export type Database = {
           province_id?: string | null
           responsable_id?: string | null
           statut?: string
+          telephone?: string | null
           updated_at?: string
+          user_id?: string | null
         }
         Relationships: [
           {
@@ -1274,6 +1301,7 @@ export type Database = {
           contact: string | null
           created_at: string
           date_creation: string | null
+          email: string | null
           federation_id: string | null
           id: string
           legacy_id: number | null
@@ -1281,13 +1309,16 @@ export type Database = {
           nom: string
           responsable_id: string | null
           statut: string
+          telephone: string | null
           updated_at: string
+          user_id: string | null
         }
         Insert: {
           commune_id?: string | null
           contact?: string | null
           created_at?: string
           date_creation?: string | null
+          email?: string | null
           federation_id?: string | null
           id?: string
           legacy_id?: number | null
@@ -1295,13 +1326,16 @@ export type Database = {
           nom: string
           responsable_id?: string | null
           statut?: string
+          telephone?: string | null
           updated_at?: string
+          user_id?: string | null
         }
         Update: {
           commune_id?: string | null
           contact?: string | null
           created_at?: string
           date_creation?: string | null
+          email?: string | null
           federation_id?: string | null
           id?: string
           legacy_id?: number | null
@@ -1309,7 +1343,9 @@ export type Database = {
           nom?: string
           responsable_id?: string | null
           statut?: string
+          telephone?: string | null
           updated_at?: string
+          user_id?: string | null
         }
         Relationships: [
           {
