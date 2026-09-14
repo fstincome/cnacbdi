@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BanqueRouteImport } from './routes/banque'
+import { Route as CollecteRouteImport } from './routes/collecte'
+import { Route as GuideRouteImport } from './routes/guide'
+import { Route as ParametresRouteImport } from './routes/parametres'
+import { Route as ProjetsPartenariatsRouteImport } from './routes/projets-partenariats'
+import { Route as RapportsRouteImport } from './routes/rapports'
+import { Route as StatistiquesRouteImport } from './routes/statistiques'
+import { Route as StructureProfilsRouteImport } from './routes/structure-profils'
+import { Route as TableauDeBordRouteImport } from './routes/tableau-de-bord'
+import { Route as MModuleRouteImport } from './routes/m.$module'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BanqueRoute = BanqueRouteImport.update({
+  id: '/banque',
+  path: '/banque',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollecteRoute = CollecteRouteImport.update({
+  id: '/collecte',
+  path: '/collecte',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuideRoute = GuideRouteImport.update({
+  id: '/guide',
+  path: '/guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParametresRoute = ParametresRouteImport.update({
+  id: '/parametres',
+  path: '/parametres',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjetsPartenariatsRoute = ProjetsPartenariatsRouteImport.update({
+  id: '/projets-partenariats',
+  path: '/projets-partenariats',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RapportsRoute = RapportsRouteImport.update({
+  id: '/rapports',
+  path: '/rapports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatistiquesRoute = StatistiquesRouteImport.update({
+  id: '/statistiques',
+  path: '/statistiques',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StructureProfilsRoute = StructureProfilsRouteImport.update({
+  id: '/structure-profils',
+  path: '/structure-profils',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TableauDeBordRoute = TableauDeBordRouteImport.update({
+  id: '/tableau-de-bord',
+  path: '/tableau-de-bord',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MModuleRoute = MModuleRouteImport.update({
+  id: '/m/$module',
+  path: '/m/$module',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/banque': typeof BanqueRoute
+  '/collecte': typeof CollecteRoute
+  '/guide': typeof GuideRoute
+  '/parametres': typeof ParametresRoute
+  '/projets-partenariats': typeof ProjetsPartenariatsRoute
+  '/rapports': typeof RapportsRoute
+  '/statistiques': typeof StatistiquesRoute
+  '/structure-profils': typeof StructureProfilsRoute
+  '/tableau-de-bord': typeof TableauDeBordRoute
+  '/m/$module': typeof MModuleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/banque': typeof BanqueRoute
+  '/collecte': typeof CollecteRoute
+  '/guide': typeof GuideRoute
+  '/parametres': typeof ParametresRoute
+  '/projets-partenariats': typeof ProjetsPartenariatsRoute
+  '/rapports': typeof RapportsRoute
+  '/statistiques': typeof StatistiquesRoute
+  '/structure-profils': typeof StructureProfilsRoute
+  '/tableau-de-bord': typeof TableauDeBordRoute
+  '/m/$module': typeof MModuleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/banque': typeof BanqueRoute
+  '/collecte': typeof CollecteRoute
+  '/guide': typeof GuideRoute
+  '/parametres': typeof ParametresRoute
+  '/projets-partenariats': typeof ProjetsPartenariatsRoute
+  '/rapports': typeof RapportsRoute
+  '/statistiques': typeof StatistiquesRoute
+  '/structure-profils': typeof StructureProfilsRoute
+  '/tableau-de-bord': typeof TableauDeBordRoute
+  '/m/$module': typeof MModuleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/banque'
+    | '/collecte'
+    | '/guide'
+    | '/parametres'
+    | '/projets-partenariats'
+    | '/rapports'
+    | '/statistiques'
+    | '/structure-profils'
+    | '/tableau-de-bord'
+    | '/m/$module'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/banque'
+    | '/collecte'
+    | '/guide'
+    | '/parametres'
+    | '/projets-partenariats'
+    | '/rapports'
+    | '/statistiques'
+    | '/structure-profils'
+    | '/tableau-de-bord'
+    | '/m/$module'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/banque'
+    | '/collecte'
+    | '/guide'
+    | '/parametres'
+    | '/projets-partenariats'
+    | '/rapports'
+    | '/statistiques'
+    | '/structure-profils'
+    | '/tableau-de-bord'
+    | '/m/$module'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  BanqueRoute: typeof BanqueRoute
+  CollecteRoute: typeof CollecteRoute
+  GuideRoute: typeof GuideRoute
+  ParametresRoute: typeof ParametresRoute
+  ProjetsPartenariatsRoute: typeof ProjetsPartenariatsRoute
+  RapportsRoute: typeof RapportsRoute
+  StatistiquesRoute: typeof StatistiquesRoute
+  StructureProfilsRoute: typeof StructureProfilsRoute
+  TableauDeBordRoute: typeof TableauDeBordRoute
+  MModuleRoute: typeof MModuleRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +195,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/banque': {
+      id: '/banque'
+      path: '/banque'
+      fullPath: '/banque'
+      preLoaderRoute: typeof BanqueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collecte': {
+      id: '/collecte'
+      path: '/collecte'
+      fullPath: '/collecte'
+      preLoaderRoute: typeof CollecteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guide': {
+      id: '/guide'
+      path: '/guide'
+      fullPath: '/guide'
+      preLoaderRoute: typeof GuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parametres': {
+      id: '/parametres'
+      path: '/parametres'
+      fullPath: '/parametres'
+      preLoaderRoute: typeof ParametresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projets-partenariats': {
+      id: '/projets-partenariats'
+      path: '/projets-partenariats'
+      fullPath: '/projets-partenariats'
+      preLoaderRoute: typeof ProjetsPartenariatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rapports': {
+      id: '/rapports'
+      path: '/rapports'
+      fullPath: '/rapports'
+      preLoaderRoute: typeof RapportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/statistiques': {
+      id: '/statistiques'
+      path: '/statistiques'
+      fullPath: '/statistiques'
+      preLoaderRoute: typeof StatistiquesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/structure-profils': {
+      id: '/structure-profils'
+      path: '/structure-profils'
+      fullPath: '/structure-profils'
+      preLoaderRoute: typeof StructureProfilsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tableau-de-bord': {
+      id: '/tableau-de-bord'
+      path: '/tableau-de-bord'
+      fullPath: '/tableau-de-bord'
+      preLoaderRoute: typeof TableauDeBordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/m/$module': {
+      id: '/m/$module'
+      path: '/m/$module'
+      fullPath: '/m/$module'
+      preLoaderRoute: typeof MModuleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  BanqueRoute: BanqueRoute,
+  CollecteRoute: CollecteRoute,
+  GuideRoute: GuideRoute,
+  ParametresRoute: ParametresRoute,
+  ProjetsPartenariatsRoute: ProjetsPartenariatsRoute,
+  RapportsRoute: RapportsRoute,
+  StatistiquesRoute: StatistiquesRoute,
+  StructureProfilsRoute: StructureProfilsRoute,
+  TableauDeBordRoute: TableauDeBordRoute,
+  MModuleRoute: MModuleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
