@@ -89,6 +89,59 @@ function Dashboard() {
     },
   });
 
+  const { data: gestion } = useQuery({
+    queryKey: ["dashboard-gestion"],
+    queryFn: async () => {
+      const [employes, archives, projets, partenaires, programmes, activites, conges] =
+        await Promise.all([
+          supabase.from("employes").select("statut, categorie_personnel"),
+          supabase.from("archives").select("id, categorie"),
+          supabase.from("projets").select("statut, budget, budget_depense, avancement"),
+          supabase.from("partenaires").select("statut"),
+          supabase.from("programmes").select("statut, budget"),
+          supabase.from("projet_activites").select("budget, date_fin"),
+          supabase.from("conges").select("statut, date_debut, date_fin"),
+        ]);
+      return {
+        employes: employes.data ?? [],
+        archives: archives.data ?? [],
+        projets: projets.data ?? [],
+        partenaires: partenaires.data ?? [],
+        programmes: programmes.data ?? [],
+        activites: activites.data ?? [],
+        conges: conges.data ?? [],
+      };
+    },
+  });
+
+  const employes = gestion?.employes ?? [];
+  const archives = gestion?.archives ?? [];
+  const projets = gestion?.projets ?? [];
+  const partenaires = gestion?.partenaires ?? [];
+  const programmes = gestion?.programmes ?? [];
+  const activites = gestion?.activites ?? [];
+  const conges = gestion?.conges ?? [];
+
+  const today = new Date().toISOString().slice(0, 10);
+  const employesActifs = employes.filter((e) => e.statut !== "Inactif").length;
+  const projetsEnCours = projets.filter((p) => p.statut === "En cours").length;
+  const budgetProjets = projets.reduce((s, p) => s + Number(p.budget ?? 0), 0);
+  const avancementMoyen = projets.length
+    ? projets.reduce((s, p) => s + Number(p.avancement ?? 0), 0) / projets.length
+    : 0;
+  const partenairesActifs = partenaires.filter((p) => p.statut !== "Inactif").length;
+  const programmesEnCours = programmes.filter((p) => p.statut === "En cours").length;
+  const budgetProgrammes = programmes.reduce((s, p) => s + Number(p.budget ?? 0), 0);
+  const activitesEnCours = activites.filter((a) => String(a.date_fin ?? "") >= today).length;
+  const budgetActivites = activites.reduce((s, a) => s + Number(a.budget ?? 0), 0);
+  const congesEnAttente = conges.filter((c) => c.statut === "En attente").length;
+  const congesEnCours = conges.filter(
+    (c) => String(c.date_debut ?? "") <= today && String(c.date_fin ?? "") >= today,
+  ).length;
+  const categoriesArchives = new Set(
+    archives.map((a) => a.categorie ?? "Non classé"),
+  ).size;
+
   const articles = data?.articles ?? [];
   const carburant = data?.carburant ?? [];
   const vehicules = data?.vehicules ?? [];
