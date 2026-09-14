@@ -9,7 +9,6 @@ import { Label } from "@/components/ui/label";
 import logoAsset from "@/assets/cnac-logo.png.asset.json";
 
 export const Route = createFileRoute("/auth")({
-  ssr: false,
   head: () => ({
     meta: [
       { title: "Connexion — CNAC MURIMA W'ISANGI" },
