@@ -1052,6 +1052,57 @@ export type Database = {
           },
         ]
       }
+      fiches_terrain: {
+        Row: {
+          association: string | null
+          colline: string | null
+          commune: string | null
+          cooperative: string | null
+          created_at: string
+          date_adhesion: string | null
+          federation: string | null
+          id: string
+          nom: string
+          prenom: string | null
+          province: string | null
+          telephone: string | null
+          union_nom: string | null
+          zone: string | null
+        }
+        Insert: {
+          association?: string | null
+          colline?: string | null
+          commune?: string | null
+          cooperative?: string | null
+          created_at?: string
+          date_adhesion?: string | null
+          federation?: string | null
+          id?: string
+          nom: string
+          prenom?: string | null
+          province?: string | null
+          telephone?: string | null
+          union_nom?: string | null
+          zone?: string | null
+        }
+        Update: {
+          association?: string | null
+          colline?: string | null
+          commune?: string | null
+          cooperative?: string | null
+          created_at?: string
+          date_adhesion?: string | null
+          federation?: string | null
+          id?: string
+          nom?: string
+          prenom?: string | null
+          province?: string | null
+          telephone?: string | null
+          union_nom?: string | null
+          zone?: string | null
+        }
+        Relationships: []
+      }
       fonctions: {
         Row: {
           created_at: string
