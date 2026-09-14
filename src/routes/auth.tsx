@@ -57,7 +57,7 @@ function AuthPage() {
       <div className="hidden flex-col justify-between bg-sidebar p-12 text-sidebar-foreground lg:flex">
         <div>
           <img
-            src={logoAsset.url}
+            src={logoUrl}
             alt="Logo de CNAC MURIMA W'ISANGI"
             className="mb-8 size-32 rounded-md bg-background object-contain p-2"
           />
@@ -80,7 +80,7 @@ function AuthPage() {
         <div className="w-full max-w-sm">
           <div className="lg:hidden">
             <img
-              src={logoAsset.url}
+              src={logoUrl}
               alt="Logo de CNAC MURIMA W'ISANGI"
               className="mb-6 size-28 rounded-md border border-border bg-background object-contain p-2"
             />
