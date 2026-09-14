@@ -6,6 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { GROUPS, ORG_NAME, modulesOfGroup } from "@/lib/modules";
 import { useMyAccess } from "@/lib/access";
 import { Button } from "@/components/ui/button";
+import { TopBar } from "@/components/TopBar";
 import { cn } from "@/lib/utils";
 
 export function AppShell({ children }: { children: ReactNode }) {
@@ -142,6 +143,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           </Button>
           <span className="truncate text-sm font-semibold">{ORG_NAME}</span>
         </header>
+        <TopBar />
         <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:py-10">{children}</main>
       </div>
     </div>
