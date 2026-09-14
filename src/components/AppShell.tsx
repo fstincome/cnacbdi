@@ -211,7 +211,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <TopBar />
         <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:py-10">{children}</main>
         <footer className="border-t border-border px-4 py-4 text-center text-[11px] text-muted-foreground/70">
-          Copy rights© CNAC BURUNDI 2026, Tous droits reserves — Développé par{" "}
+          Copy rights© {new Date().getFullYear()} CNAC BURUNDI, Tous droits reserves — Développé par{" "}
           <a
             href="https://www.sightnetwork.org"
             target="_blank"
