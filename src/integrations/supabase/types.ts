@@ -1369,6 +1369,38 @@ export type Database = {
           },
         ]
       }
+      profil_module_access: {
+        Row: {
+          created_at: string
+          id: string
+          module_slug: string
+          profil_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          module_slug: string
+          profil_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          module_slug?: string
+          profil_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profil_module_access_profil_id_fkey"
+            columns: ["profil_id"]
+            isOneToOne: false
+            referencedRelation: "profils"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           created_at: string | null
