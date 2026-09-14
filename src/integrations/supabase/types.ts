@@ -930,6 +930,7 @@ export type Database = {
           legacy_id: number | null
           nbre_associations: number
           nbre_cooperatives: number
+          nbre_membres: number
           nbre_unions: number
           nom: string
           province_id: string | null
@@ -948,6 +949,7 @@ export type Database = {
           legacy_id?: number | null
           nbre_associations?: number
           nbre_cooperatives?: number
+          nbre_membres?: number
           nbre_unions?: number
           nom: string
           province_id?: string | null
@@ -966,6 +968,7 @@ export type Database = {
           legacy_id?: number | null
           nbre_associations?: number
           nbre_cooperatives?: number
+          nbre_membres?: number
           nbre_unions?: number
           nom?: string
           province_id?: string | null
