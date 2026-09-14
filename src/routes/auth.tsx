@@ -73,7 +73,20 @@ function AuthPage() {
           <li>Charroi, carburant et entretiens</li>
           <li>Projets, partenariats, suivi et rapports</li>
         </ul>
-        <p className="text-xs opacity-60">Accès strictement réservé au personnel autorisé.</p>
+        <div>
+          <p className="text-xs opacity-60">Accès strictement réservé au personnel autorisé.</p>
+          <p className="mt-3 text-[11px] opacity-50">
+            © {new Date().getFullYear()} SIGHT AFRICA — Développé par{" "}
+            <a
+              href="https://www.sightnetwork.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-sidebar-foreground"
+            >
+              www.sightnetwork.org
+            </a>
+          </p>
+        </div>
       </div>
 
       <div className="flex items-center justify-center px-4 py-16">
@@ -126,6 +139,17 @@ function AuthPage() {
           <p className="mt-6 text-xs text-muted-foreground">
             La création de compte n'est pas ouverte au public. Les accès sont délivrés par
             l'administrateur du système.
+          </p>
+          <p className="mt-4 text-[11px] text-muted-foreground/70">
+            © {new Date().getFullYear()} SIGHT AFRICA — Développé par{" "}
+            <a
+              href="https://www.sightnetwork.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-foreground"
+            >
+              www.sightnetwork.org
+            </a>
           </p>
         </div>
       </div>

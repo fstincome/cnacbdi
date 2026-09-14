@@ -210,6 +210,17 @@ export function AppShell({ children }: { children: ReactNode }) {
         </header>
         <TopBar />
         <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:py-10">{children}</main>
+        <footer className="border-t border-border px-4 py-4 text-center text-[11px] text-muted-foreground/70">
+          © {new Date().getFullYear()} SIGHT AFRICA — Développé par{" "}
+          <a
+            href="https://www.sightnetwork.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-foreground"
+          >
+            www.sightnetwork.org
+          </a>
+        </footer>
       </div>
     </div>
   );
