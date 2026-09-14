@@ -313,7 +313,7 @@ function Dashboard() {
               <Shortcut to="conges" label="Congés" icon={CalendarClock} />
               <Shortcut to="archives" label="Archives" icon={Archive} />
               <Button asChild variant="outline" size="sm">
-                <Link to="/projets-partenariats">
+                <Link to="/projets-partenariats" search={{ onglet: "projets" }}>ical
                   <FolderKanban className="mr-2 size-4" /> Projets
                 </Link>
               </Button>
