@@ -303,6 +303,78 @@ function Dashboard() {
           />
         </div>
 
+        <section className="space-y-4">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <h2 className="text-lg font-semibold tracking-tight">
+              Personnel, projets et documentation
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              <Shortcut to="employes" label="Employés" icon={Users} />
+              <Shortcut to="conges" label="Congés" icon={CalendarClock} />
+              <Shortcut to="archives" label="Archives" icon={Archive} />
+              <Button asChild variant="outline" size="sm">
+                <Link to="/projets-partenariats">
+                  <FolderKanban className="mr-2 size-4" /> Projets
+                </Link>
+              </Button>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <Kpi
+              icon={Users}
+              label="Employés"
+              value={String(employes.length)}
+              hint={`${employesActifs} en activité`}
+            />
+            <Kpi
+              icon={CalendarClock}
+              label="Congés"
+              value={`${congesEnCours} / ${conges.length}`}
+              hint={`${congesEnAttente} demande(s) en attente`}
+              tone={congesEnAttente > 0 ? "warn" : "ok"}
+            />
+            <Kpi
+              icon={Archive}
+              label="Documents archivés"
+              value={String(archives.length)}
+              hint={`${categoriesArchives} catégorie(s)`}
+            />
+            <Kpi
+              icon={FolderKanban}
+              label="Projets"
+              value={`${projetsEnCours} / ${projets.length}`}
+              hint={`Budget : ${formatMoney(budgetProjets)}`}
+            />
+            <Kpi
+              icon={Handshake}
+              label="Partenaires"
+              value={String(partenaires.length)}
+              hint={`${partenairesActifs} partenariat(s) actif(s)`}
+            />
+            <Kpi
+              icon={Target}
+              label="Programmes"
+              value={`${programmesEnCours} / ${programmes.length}`}
+              hint={`Budget : ${formatMoney(budgetProgrammes)}`}
+            />
+            <Kpi
+              icon={ListChecks}
+              label="Activités de projets"
+              value={`${activitesEnCours} / ${activites.length}`}
+              hint={`Budget engagé : ${formatMoney(budgetActivites)}`}
+            />
+            <Kpi
+              icon={BarChart3}
+              label="Avancement moyen des projets"
+              value={`${formatNumber(Math.round(avancementMoyen))} %`}
+              hint={`${projets.length} projet(s) suivi(s)`}
+            />
+          </div>
+        </section>
+
+
+
         <div className="grid gap-4 lg:grid-cols-3">
           <Card className="lg:col-span-2">
             <CardHeader className="pb-2">
