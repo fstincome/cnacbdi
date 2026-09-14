@@ -178,9 +178,9 @@ export type Database = {
         Row: {
           colline_id: string | null
           contact: string | null
+          cooperative_id: string | null
           created_at: string
           date_creation: string | null
-          federation_id: string | null
           id: string
           legacy_id: number | null
           nbre_membres: number
@@ -192,9 +192,9 @@ export type Database = {
         Insert: {
           colline_id?: string | null
           contact?: string | null
+          cooperative_id?: string | null
           created_at?: string
           date_creation?: string | null
-          federation_id?: string | null
           id?: string
           legacy_id?: number | null
           nbre_membres?: number
@@ -206,9 +206,9 @@ export type Database = {
         Update: {
           colline_id?: string | null
           contact?: string | null
+          cooperative_id?: string | null
           created_at?: string
           date_creation?: string | null
-          federation_id?: string | null
           id?: string
           legacy_id?: number | null
           nbre_membres?: number
@@ -226,10 +226,10 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "associations_federation_id_fkey"
-            columns: ["federation_id"]
+            foreignKeyName: "associations_cooperative_id_fkey"
+            columns: ["cooperative_id"]
             isOneToOne: false
-            referencedRelation: "federations"
+            referencedRelation: "cooperatives"
             referencedColumns: ["id"]
           },
           {
@@ -473,67 +473,67 @@ export type Database = {
       }
       cooperatives: {
         Row: {
-          colline_id: string | null
           contact: string | null
           created_at: string
           date_creation: string | null
-          federation_id: string | null
           id: string
           legacy_id: number | null
           nbre_membres: number
           nom: string
           responsable_id: string | null
           statut: string
+          union_id: string | null
           updated_at: string
+          zone_id: string | null
         }
         Insert: {
-          colline_id?: string | null
           contact?: string | null
           created_at?: string
           date_creation?: string | null
-          federation_id?: string | null
           id?: string
           legacy_id?: number | null
           nbre_membres?: number
           nom: string
           responsable_id?: string | null
           statut?: string
+          union_id?: string | null
           updated_at?: string
+          zone_id?: string | null
         }
         Update: {
-          colline_id?: string | null
           contact?: string | null
           created_at?: string
           date_creation?: string | null
-          federation_id?: string | null
           id?: string
           legacy_id?: number | null
           nbre_membres?: number
           nom?: string
           responsable_id?: string | null
           statut?: string
+          union_id?: string | null
           updated_at?: string
+          zone_id?: string | null
         }
         Relationships: [
-          {
-            foreignKeyName: "cooperatives_colline_id_fkey"
-            columns: ["colline_id"]
-            isOneToOne: false
-            referencedRelation: "collines"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "cooperatives_federation_id_fkey"
-            columns: ["federation_id"]
-            isOneToOne: false
-            referencedRelation: "federations"
-            referencedColumns: ["id"]
-          },
           {
             foreignKeyName: "cooperatives_responsable_id_fkey"
             columns: ["responsable_id"]
             isOneToOne: false
             referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "cooperatives_union_id_fkey"
+            columns: ["union_id"]
+            isOneToOne: false
+            referencedRelation: "unions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "cooperatives_zone_id_fkey"
+            columns: ["zone_id"]
+            isOneToOne: false
+            referencedRelation: "zones"
             referencedColumns: ["id"]
           },
         ]
@@ -805,7 +805,6 @@ export type Database = {
         Row: {
           association_id: string | null
           contact: string | null
-          cooperative_id: string | null
           created_at: string
           date_adhesion: string | null
           date_naissance: string | null
@@ -817,13 +816,11 @@ export type Database = {
           sexe: string | null
           statut: string
           superficie: string | null
-          union_id: string | null
           updated_at: string
         }
         Insert: {
           association_id?: string | null
           contact?: string | null
-          cooperative_id?: string | null
           created_at?: string
           date_adhesion?: string | null
           date_naissance?: string | null
@@ -835,13 +832,11 @@ export type Database = {
           sexe?: string | null
           statut?: string
           superficie?: string | null
-          union_id?: string | null
           updated_at?: string
         }
         Update: {
           association_id?: string | null
           contact?: string | null
-          cooperative_id?: string | null
           created_at?: string
           date_adhesion?: string | null
           date_naissance?: string | null
@@ -853,7 +848,6 @@ export type Database = {
           sexe?: string | null
           statut?: string
           superficie?: string | null
-          union_id?: string | null
           updated_at?: string
         }
         Relationships: [
@@ -862,20 +856,6 @@ export type Database = {
             columns: ["association_id"]
             isOneToOne: false
             referencedRelation: "associations"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "membres_cooperative_id_fkey"
-            columns: ["cooperative_id"]
-            isOneToOne: false
-            referencedRelation: "cooperatives"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "membres_union_id_fkey"
-            columns: ["union_id"]
-            isOneToOne: false
-            referencedRelation: "unions"
             referencedColumns: ["id"]
           },
         ]
@@ -1290,7 +1270,7 @@ export type Database = {
       }
       unions: {
         Row: {
-          colline_id: string | null
+          commune_id: string | null
           contact: string | null
           created_at: string
           date_creation: string | null
@@ -1304,7 +1284,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
-          colline_id?: string | null
+          commune_id?: string | null
           contact?: string | null
           created_at?: string
           date_creation?: string | null
@@ -1318,7 +1298,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
-          colline_id?: string | null
+          commune_id?: string | null
           contact?: string | null
           created_at?: string
           date_creation?: string | null
@@ -1333,10 +1313,10 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "unions_colline_id_fkey"
-            columns: ["colline_id"]
+            foreignKeyName: "unions_commune_id_fkey"
+            columns: ["commune_id"]
             isOneToOne: false
-            referencedRelation: "collines"
+            referencedRelation: "communes"
             referencedColumns: ["id"]
           },
           {
