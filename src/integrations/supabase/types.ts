@@ -14,16 +14,978 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      achats: {
+        Row: {
+          created_at: string | null
+          date_achat: string | null
+          designation: string | null
+          fournisseur_id: string | null
+          id: string
+          legacy_id: string | null
+          montant: number | null
+          quantite: number | null
+          reference: string
+          statut: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          date_achat?: string | null
+          designation?: string | null
+          fournisseur_id?: string | null
+          id?: string
+          legacy_id?: string | null
+          montant?: number | null
+          quantite?: number | null
+          reference: string
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          date_achat?: string | null
+          designation?: string | null
+          fournisseur_id?: string | null
+          id?: string
+          legacy_id?: string | null
+          montant?: number | null
+          quantite?: number | null
+          reference?: string
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "achats_fournisseur_id_fkey"
+            columns: ["fournisseur_id"]
+            isOneToOne: false
+            referencedRelation: "fournisseurs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      archives: {
+        Row: {
+          auteur_id: string | null
+          auteur_nom: string | null
+          categorie: string | null
+          created_at: string | null
+          date_document: string | null
+          dossier_id: string | null
+          emplacement: string | null
+          fichier_path: string | null
+          id: string
+          legacy_id: string | null
+          observation: string | null
+          reference: string | null
+          service: string | null
+          titre: string
+          type_document: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          auteur_id?: string | null
+          auteur_nom?: string | null
+          categorie?: string | null
+          created_at?: string | null
+          date_document?: string | null
+          dossier_id?: string | null
+          emplacement?: string | null
+          fichier_path?: string | null
+          id?: string
+          legacy_id?: string | null
+          observation?: string | null
+          reference?: string | null
+          service?: string | null
+          titre: string
+          type_document?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          auteur_id?: string | null
+          auteur_nom?: string | null
+          categorie?: string | null
+          created_at?: string | null
+          date_document?: string | null
+          dossier_id?: string | null
+          emplacement?: string | null
+          fichier_path?: string | null
+          id?: string
+          legacy_id?: string | null
+          observation?: string | null
+          reference?: string | null
+          service?: string | null
+          titre?: string
+          type_document?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "archives_auteur_id_fkey"
+            columns: ["auteur_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      articles: {
+        Row: {
+          categorie: string | null
+          code: string | null
+          created_at: string | null
+          designation: string
+          id: string
+          legacy_id: string | null
+          magasin: string | null
+          prix_unitaire: number | null
+          quantite_stock: number | null
+          seuil_alerte: number | null
+          unite: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          categorie?: string | null
+          code?: string | null
+          created_at?: string | null
+          designation: string
+          id?: string
+          legacy_id?: string | null
+          magasin?: string | null
+          prix_unitaire?: number | null
+          quantite_stock?: number | null
+          seuil_alerte?: number | null
+          unite?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          categorie?: string | null
+          code?: string | null
+          created_at?: string | null
+          designation?: string
+          id?: string
+          legacy_id?: string | null
+          magasin?: string | null
+          prix_unitaire?: number | null
+          quantite_stock?: number | null
+          seuil_alerte?: number | null
+          unite?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      budgets: {
+        Row: {
+          categorie: string | null
+          created_at: string | null
+          exercice: string | null
+          id: string
+          legacy_id: string | null
+          montant_alloue: number | null
+          montant_depense: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          categorie?: string | null
+          created_at?: string | null
+          exercice?: string | null
+          id?: string
+          legacy_id?: string | null
+          montant_alloue?: number | null
+          montant_depense?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          categorie?: string | null
+          created_at?: string | null
+          exercice?: string | null
+          id?: string
+          legacy_id?: string | null
+          montant_alloue?: number | null
+          montant_depense?: number | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      carburant: {
+        Row: {
+          created_at: string | null
+          date_operation: string | null
+          id: string
+          legacy_id: string | null
+          montant: number | null
+          quantite: number | null
+          type_operation: string | null
+          updated_at: string | null
+          vehicule_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          date_operation?: string | null
+          id?: string
+          legacy_id?: string | null
+          montant?: number | null
+          quantite?: number | null
+          type_operation?: string | null
+          updated_at?: string | null
+          vehicule_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          date_operation?: string | null
+          id?: string
+          legacy_id?: string | null
+          montant?: number | null
+          quantite?: number | null
+          type_operation?: string | null
+          updated_at?: string | null
+          vehicule_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "carburant_vehicule_id_fkey"
+            columns: ["vehicule_id"]
+            isOneToOne: false
+            referencedRelation: "vehicules"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      clients: {
+        Row: {
+          adresse: string | null
+          contact: string | null
+          created_at: string | null
+          email: string | null
+          id: string
+          legacy_id: string | null
+          nom: string
+          telephone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          adresse?: string | null
+          contact?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom: string
+          telephone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          adresse?: string | null
+          contact?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom?: string
+          telephone?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      conges: {
+        Row: {
+          created_at: string | null
+          date_debut: string | null
+          date_fin: string | null
+          employe_id: string | null
+          id: string
+          legacy_id: string | null
+          motif: string | null
+          statut: string | null
+          type_conge: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          date_debut?: string | null
+          date_fin?: string | null
+          employe_id?: string | null
+          id?: string
+          legacy_id?: string | null
+          motif?: string | null
+          statut?: string | null
+          type_conge?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          date_debut?: string | null
+          date_fin?: string | null
+          employe_id?: string | null
+          id?: string
+          legacy_id?: string | null
+          motif?: string | null
+          statut?: string | null
+          type_conge?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "conges_employe_id_fkey"
+            columns: ["employe_id"]
+            isOneToOne: false
+            referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      employes: {
+        Row: {
+          adresse: string | null
+          created_at: string | null
+          date_embauche: string | null
+          date_naissance: string | null
+          departement: string | null
+          email: string | null
+          fonction: string | null
+          id: string
+          legacy_id: string | null
+          matricule: string
+          nom: string
+          prenom: string | null
+          salaire_base: number | null
+          sexe: string | null
+          statut: string | null
+          telephone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          adresse?: string | null
+          created_at?: string | null
+          date_embauche?: string | null
+          date_naissance?: string | null
+          departement?: string | null
+          email?: string | null
+          fonction?: string | null
+          id?: string
+          legacy_id?: string | null
+          matricule: string
+          nom: string
+          prenom?: string | null
+          salaire_base?: number | null
+          sexe?: string | null
+          statut?: string | null
+          telephone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          adresse?: string | null
+          created_at?: string | null
+          date_embauche?: string | null
+          date_naissance?: string | null
+          departement?: string | null
+          email?: string | null
+          fonction?: string | null
+          id?: string
+          legacy_id?: string | null
+          matricule?: string
+          nom?: string
+          prenom?: string | null
+          salaire_base?: number | null
+          sexe?: string | null
+          statut?: string | null
+          telephone?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      entretiens: {
+        Row: {
+          cout: number | null
+          created_at: string | null
+          date_entretien: string | null
+          description: string | null
+          id: string
+          legacy_id: string | null
+          prestataire: string | null
+          statut: string | null
+          type_entretien: string | null
+          updated_at: string | null
+          vehicule_id: string | null
+        }
+        Insert: {
+          cout?: number | null
+          created_at?: string | null
+          date_entretien?: string | null
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          prestataire?: string | null
+          statut?: string | null
+          type_entretien?: string | null
+          updated_at?: string | null
+          vehicule_id?: string | null
+        }
+        Update: {
+          cout?: number | null
+          created_at?: string | null
+          date_entretien?: string | null
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          prestataire?: string | null
+          statut?: string | null
+          type_entretien?: string | null
+          updated_at?: string | null
+          vehicule_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "entretiens_vehicule_id_fkey"
+            columns: ["vehicule_id"]
+            isOneToOne: false
+            referencedRelation: "vehicules"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      fournisseurs: {
+        Row: {
+          adresse: string | null
+          contact: string | null
+          created_at: string | null
+          email: string | null
+          id: string
+          legacy_id: string | null
+          nom: string
+          telephone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          adresse?: string | null
+          contact?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom: string
+          telephone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          adresse?: string | null
+          contact?: string | null
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom?: string
+          telephone?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      mouvements_stock: {
+        Row: {
+          article_id: string | null
+          created_at: string | null
+          date_mouvement: string | null
+          id: string
+          legacy_id: string | null
+          motif: string | null
+          quantite: number | null
+          type_mouvement: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          article_id?: string | null
+          created_at?: string | null
+          date_mouvement?: string | null
+          id?: string
+          legacy_id?: string | null
+          motif?: string | null
+          quantite?: number | null
+          type_mouvement?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          article_id?: string | null
+          created_at?: string | null
+          date_mouvement?: string | null
+          id?: string
+          legacy_id?: string | null
+          motif?: string | null
+          quantite?: number | null
+          type_mouvement?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mouvements_stock_article_id_fkey"
+            columns: ["article_id"]
+            isOneToOne: false
+            referencedRelation: "articles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      operations: {
+        Row: {
+          compte: string | null
+          created_at: string | null
+          date_operation: string | null
+          description: string | null
+          id: string
+          legacy_id: string | null
+          montant: number | null
+          reference: string | null
+          type_operation: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          compte?: string | null
+          created_at?: string | null
+          date_operation?: string | null
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          montant?: number | null
+          reference?: string | null
+          type_operation?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          compte?: string | null
+          created_at?: string | null
+          date_operation?: string | null
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          montant?: number | null
+          reference?: string | null
+          type_operation?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      partenaires: {
+        Row: {
+          adresse: string | null
+          contact: string | null
+          created_at: string | null
+          domaine: string | null
+          email: string | null
+          id: string
+          legacy_id: string | null
+          nom: string
+          statut: string | null
+          telephone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          adresse?: string | null
+          contact?: string | null
+          created_at?: string | null
+          domaine?: string | null
+          email?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom: string
+          statut?: string | null
+          telephone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          adresse?: string | null
+          contact?: string | null
+          created_at?: string | null
+          domaine?: string | null
+          email?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom?: string
+          statut?: string | null
+          telephone?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      presences: {
+        Row: {
+          created_at: string | null
+          date_presence: string | null
+          employe_id: string | null
+          heure_arrivee: string | null
+          heure_depart: string | null
+          id: string
+          legacy_id: string | null
+          statut: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          date_presence?: string | null
+          employe_id?: string | null
+          heure_arrivee?: string | null
+          heure_depart?: string | null
+          id?: string
+          legacy_id?: string | null
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          date_presence?: string | null
+          employe_id?: string | null
+          heure_arrivee?: string | null
+          heure_depart?: string | null
+          id?: string
+          legacy_id?: string | null
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "presences_employe_id_fkey"
+            columns: ["employe_id"]
+            isOneToOne: false
+            referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      programmes: {
+        Row: {
+          budget: number | null
+          created_at: string | null
+          date_debut: string | null
+          date_fin: string | null
+          description: string | null
+          id: string
+          legacy_id: string | null
+          nom: string
+          statut: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          budget?: number | null
+          created_at?: string | null
+          date_debut?: string | null
+          date_fin?: string | null
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom: string
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          budget?: number | null
+          created_at?: string | null
+          date_debut?: string | null
+          date_fin?: string | null
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom?: string
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      projets: {
+        Row: {
+          budget: number | null
+          created_at: string | null
+          date_debut: string | null
+          date_fin: string | null
+          description: string | null
+          id: string
+          legacy_id: string | null
+          nom: string
+          partenaire_id: string | null
+          programme_id: string | null
+          statut: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          budget?: number | null
+          created_at?: string | null
+          date_debut?: string | null
+          date_fin?: string | null
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom: string
+          partenaire_id?: string | null
+          programme_id?: string | null
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          budget?: number | null
+          created_at?: string | null
+          date_debut?: string | null
+          date_fin?: string | null
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom?: string
+          partenaire_id?: string | null
+          programme_id?: string | null
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "projets_partenaire_id_fkey"
+            columns: ["partenaire_id"]
+            isOneToOne: false
+            referencedRelation: "partenaires"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "projets_programme_id_fkey"
+            columns: ["programme_id"]
+            isOneToOne: false
+            referencedRelation: "programmes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      salaires: {
+        Row: {
+          avance: number | null
+          created_at: string | null
+          employe_id: string | null
+          id: string
+          mois: string | null
+          montant_brut: number | null
+          montant_net: number | null
+          primes: number | null
+          retenues: number | null
+          statut: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          avance?: number | null
+          created_at?: string | null
+          employe_id?: string | null
+          id?: string
+          mois?: string | null
+          montant_brut?: number | null
+          montant_net?: number | null
+          primes?: number | null
+          retenues?: number | null
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          avance?: number | null
+          created_at?: string | null
+          employe_id?: string | null
+          id?: string
+          mois?: string | null
+          montant_brut?: number | null
+          montant_net?: number | null
+          primes?: number | null
+          retenues?: number | null
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "salaires_employe_id_fkey"
+            columns: ["employe_id"]
+            isOneToOne: false
+            referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      transactions_mobile: {
+        Row: {
+          created_at: string | null
+          date_transaction: string | null
+          destinataire: string | null
+          id: string
+          legacy_id: string | null
+          montant: number | null
+          operateur: string | null
+          reference: string | null
+          statut: string | null
+          type_transaction: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          date_transaction?: string | null
+          destinataire?: string | null
+          id?: string
+          legacy_id?: string | null
+          montant?: number | null
+          operateur?: string | null
+          reference?: string | null
+          statut?: string | null
+          type_transaction?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          date_transaction?: string | null
+          destinataire?: string | null
+          id?: string
+          legacy_id?: string | null
+          montant?: number | null
+          operateur?: string | null
+          reference?: string | null
+          statut?: string | null
+          type_transaction?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"] | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"] | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"] | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      vehicules: {
+        Row: {
+          annee: number | null
+          created_at: string | null
+          id: string
+          immatriculation: string
+          legacy_id: string | null
+          marque: string | null
+          modele: string | null
+          statut: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          annee?: number | null
+          created_at?: string | null
+          id?: string
+          immatriculation: string
+          legacy_id?: string | null
+          marque?: string | null
+          modele?: string | null
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          annee?: number | null
+          created_at?: string | null
+          id?: string
+          immatriculation?: string
+          legacy_id?: string | null
+          marque?: string | null
+          modele?: string | null
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      ventes: {
+        Row: {
+          client_id: string | null
+          created_at: string | null
+          date_vente: string | null
+          designation: string | null
+          id: string
+          legacy_id: string | null
+          montant: number | null
+          quantite: number | null
+          reference: string
+          statut: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          client_id?: string | null
+          created_at?: string | null
+          date_vente?: string | null
+          designation?: string | null
+          id?: string
+          legacy_id?: string | null
+          montant?: number | null
+          quantite?: number | null
+          reference: string
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          client_id?: string | null
+          created_at?: string | null
+          date_vente?: string | null
+          designation?: string | null
+          id?: string
+          legacy_id?: string | null
+          montant?: number | null
+          quantite?: number | null
+          reference?: string
+          statut?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ventes_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "gestionnaire" | "agent"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +1112,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "gestionnaire", "agent"],
+    },
   },
 } as const
