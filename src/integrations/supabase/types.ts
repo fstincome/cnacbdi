@@ -563,6 +563,39 @@ export type Database = {
           },
         ]
       }
+      departements: {
+        Row: {
+          code: string | null
+          created_at: string
+          description: string | null
+          id: string
+          legacy_id: string | null
+          nom: string
+          statut: string
+          updated_at: string
+        }
+        Insert: {
+          code?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom: string
+          statut?: string
+          updated_at?: string
+        }
+        Update: {
+          code?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom?: string
+          statut?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       details_paie: {
         Row: {
           allocations_familiales: number
@@ -687,9 +720,11 @@ export type Database = {
           date_embauche: string | null
           date_naissance: string | null
           departement: string | null
+          departement_id: string | null
           dossier_path: string | null
           email: string | null
           fonction: string | null
+          fonction_id: string | null
           id: string
           legacy_id: string | null
           matricule: string
@@ -698,6 +733,7 @@ export type Database = {
           numero_compte: string | null
           prenom: string | null
           profil: string | null
+          profil_id: string | null
           responsable: string | null
           salaire_base: number | null
           sexe: string | null
@@ -715,9 +751,11 @@ export type Database = {
           date_embauche?: string | null
           date_naissance?: string | null
           departement?: string | null
+          departement_id?: string | null
           dossier_path?: string | null
           email?: string | null
           fonction?: string | null
+          fonction_id?: string | null
           id?: string
           legacy_id?: string | null
           matricule: string
@@ -726,6 +764,7 @@ export type Database = {
           numero_compte?: string | null
           prenom?: string | null
           profil?: string | null
+          profil_id?: string | null
           responsable?: string | null
           salaire_base?: number | null
           sexe?: string | null
@@ -743,9 +782,11 @@ export type Database = {
           date_embauche?: string | null
           date_naissance?: string | null
           departement?: string | null
+          departement_id?: string | null
           dossier_path?: string | null
           email?: string | null
           fonction?: string | null
+          fonction_id?: string | null
           id?: string
           legacy_id?: string | null
           matricule?: string
@@ -754,6 +795,7 @@ export type Database = {
           numero_compte?: string | null
           prenom?: string | null
           profil?: string | null
+          profil_id?: string | null
           responsable?: string | null
           salaire_base?: number | null
           sexe?: string | null
@@ -762,7 +804,29 @@ export type Database = {
           updated_at?: string | null
           user_id?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "employes_departement_id_fkey"
+            columns: ["departement_id"]
+            isOneToOne: false
+            referencedRelation: "departements"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "employes_fonction_id_fkey"
+            columns: ["fonction_id"]
+            isOneToOne: false
+            referencedRelation: "fonctions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "employes_profil_id_fkey"
+            columns: ["profil_id"]
+            isOneToOne: false
+            referencedRelation: "profils"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       entretiens: {
         Row: {
@@ -942,6 +1006,47 @@ export type Database = {
             columns: ["modificateur_id"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      fonctions: {
+        Row: {
+          created_at: string
+          departement_id: string | null
+          description: string | null
+          id: string
+          legacy_id: string | null
+          nom: string
+          statut: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          departement_id?: string | null
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom: string
+          statut?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          departement_id?: string | null
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom?: string
+          statut?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fonctions_departement_id_fkey"
+            columns: ["departement_id"]
+            isOneToOne: false
+            referencedRelation: "departements"
             referencedColumns: ["id"]
           },
         ]
@@ -1287,6 +1392,47 @@ export type Database = {
           updated_at?: string | null
         }
         Relationships: []
+      }
+      profils: {
+        Row: {
+          created_at: string
+          description: string | null
+          fonction_id: string | null
+          id: string
+          legacy_id: string | null
+          nom: string
+          statut: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          fonction_id?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom: string
+          statut?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          fonction_id?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom?: string
+          statut?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profils_fonction_id_fkey"
+            columns: ["fonction_id"]
+            isOneToOne: false
+            referencedRelation: "fonctions"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       programmes: {
         Row: {
