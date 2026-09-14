@@ -76,7 +76,7 @@ function AuthPage() {
         <div>
           <p className="text-xs opacity-60">Accès strictement réservé au personnel autorisé.</p>
           <p className="mt-3 text-[11px] opacity-50">
-            Copy rights© CNAC BURUNDI 2026, Tous droits reserves — Développé par{" "}
+            Copy rights© {new Date().getFullYear()} CNAC BURUNDI, Tous droits reserves — Développé par{" "}
             <a
               href="https://www.sightnetwork.org"
               target="_blank"
@@ -137,7 +137,7 @@ function AuthPage() {
           </form>
 
           <p className="mt-6 text-[11px] text-muted-foreground/70">
-            Copy rights© CNAC BURUNDI 2026, Tous droits reserves — Développé par{" "}
+            Copy rights© {new Date().getFullYear()} CNAC BURUNDI, Tous droits reserves — Développé par{" "}
             <a
               href="https://www.sightnetwork.org"
               target="_blank"
