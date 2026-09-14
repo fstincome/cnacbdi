@@ -1292,10 +1292,14 @@ export type Database = {
           email: string | null
           id: string
           legacy_id: string | null
+          localisation: string | null
+          logo_path: string | null
           nom: string
+          objet_collaboration: string | null
           statut: string | null
           telephone: string | null
           updated_at: string | null
+          website_url: string | null
         }
         Insert: {
           adresse?: string | null
@@ -1305,10 +1309,14 @@ export type Database = {
           email?: string | null
           id?: string
           legacy_id?: string | null
+          localisation?: string | null
+          logo_path?: string | null
           nom: string
+          objet_collaboration?: string | null
           statut?: string | null
           telephone?: string | null
           updated_at?: string | null
+          website_url?: string | null
         }
         Update: {
           adresse?: string | null
@@ -1318,10 +1326,14 @@ export type Database = {
           email?: string | null
           id?: string
           legacy_id?: string | null
+          localisation?: string | null
+          logo_path?: string | null
           nom?: string
+          objet_collaboration?: string | null
           statut?: string | null
           telephone?: string | null
           updated_at?: string | null
+          website_url?: string | null
         }
         Relationships: []
       }
@@ -1476,6 +1488,7 @@ export type Database = {
           id: string
           legacy_id: string | null
           nom: string
+          objectifs: string | null
           statut: string | null
           updated_at: string | null
         }
@@ -1488,6 +1501,7 @@ export type Database = {
           id?: string
           legacy_id?: string | null
           nom: string
+          objectifs?: string | null
           statut?: string | null
           updated_at?: string | null
         }
@@ -1500,21 +1514,123 @@ export type Database = {
           id?: string
           legacy_id?: string | null
           nom?: string
+          objectifs?: string | null
           statut?: string | null
           updated_at?: string | null
         }
         Relationships: []
       }
+      projet_activites: {
+        Row: {
+          activite: string
+          budget: number
+          created_at: string
+          date_debut: string
+          date_fin: string
+          engagement_path: string | null
+          id: string
+          projet_id: string
+          responsable_id: string
+          updated_at: string
+        }
+        Insert: {
+          activite: string
+          budget?: number
+          created_at?: string
+          date_debut: string
+          date_fin: string
+          engagement_path?: string | null
+          id?: string
+          projet_id: string
+          responsable_id: string
+          updated_at?: string
+        }
+        Update: {
+          activite?: string
+          budget?: number
+          created_at?: string
+          date_debut?: string
+          date_fin?: string
+          engagement_path?: string | null
+          id?: string
+          projet_id?: string
+          responsable_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "projet_activites_projet_id_fkey"
+            columns: ["projet_id"]
+            isOneToOne: false
+            referencedRelation: "projets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "projet_activites_responsable_id_fkey"
+            columns: ["responsable_id"]
+            isOneToOne: false
+            referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projet_participants: {
+        Row: {
+          created_at: string
+          date_attribution: string
+          employe_id: string
+          id: string
+          projet_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          date_attribution?: string
+          employe_id: string
+          id?: string
+          projet_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          date_attribution?: string
+          employe_id?: string
+          id?: string
+          projet_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "projet_participants_employe_id_fkey"
+            columns: ["employe_id"]
+            isOneToOne: false
+            referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "projet_participants_projet_id_fkey"
+            columns: ["projet_id"]
+            isOneToOne: false
+            referencedRelation: "projets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       projets: {
         Row: {
           budget: number | null
+          budget_depense: number
+          budget_restant: number
+          chef_projet_id: string | null
           created_at: string | null
           date_debut: string | null
           date_fin: string | null
           description: string | null
+          fichier_path: string | null
           id: string
           legacy_id: string | null
           nom: string
+          objectifs: string | null
           partenaire_id: string | null
           programme_id: string | null
           statut: string | null
@@ -1522,13 +1638,18 @@ export type Database = {
         }
         Insert: {
           budget?: number | null
+          budget_depense?: number
+          budget_restant?: number
+          chef_projet_id?: string | null
           created_at?: string | null
           date_debut?: string | null
           date_fin?: string | null
           description?: string | null
+          fichier_path?: string | null
           id?: string
           legacy_id?: string | null
           nom: string
+          objectifs?: string | null
           partenaire_id?: string | null
           programme_id?: string | null
           statut?: string | null
@@ -1536,19 +1657,31 @@ export type Database = {
         }
         Update: {
           budget?: number | null
+          budget_depense?: number
+          budget_restant?: number
+          chef_projet_id?: string | null
           created_at?: string | null
           date_debut?: string | null
           date_fin?: string | null
           description?: string | null
+          fichier_path?: string | null
           id?: string
           legacy_id?: string | null
           nom?: string
+          objectifs?: string | null
           partenaire_id?: string | null
           programme_id?: string | null
           statut?: string | null
           updated_at?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "projets_chef_projet_id_fkey"
+            columns: ["chef_projet_id"]
+            isOneToOne: false
+            referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "projets_partenaire_id_fkey"
             columns: ["partenaire_id"]
