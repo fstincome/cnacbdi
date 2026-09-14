@@ -84,8 +84,7 @@ function AuthPage() {
               className="underline hover:text-sidebar-foreground"
             >
               SIGHT AFRICA
-            </a>{" "}
-            (www.sightnetwork.org) en interne
+            </a>
           </p>
         </div>
       </div>
@@ -146,8 +145,7 @@ function AuthPage() {
               className="underline hover:text-foreground"
             >
               SIGHT AFRICA
-            </a>{" "}
-            (www.sightnetwork.org) en interne
+            </a>
           </p>
         </div>
       </div>

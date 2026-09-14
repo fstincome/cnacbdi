@@ -219,8 +219,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             className="underline hover:text-foreground"
           >
             SIGHT AFRICA
-          </a>{" "}
-          (www.sightnetwork.org) en interne
+          </a>
         </footer>
       </div>
     </div>
