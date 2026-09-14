@@ -25,8 +25,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-export const APP_NAME = "MurimaGest";
-export const APP_TAGLINE = "Gestion intégrée des coopératives et de l'action sociale";
+export const APP_NAME = "Confédération Nationale des Associations des Caféiculteurs";
+export const APP_TAGLINE = "Système intégré de gestion des coopératives et caféiculteurs";
 
 function useNow() {
   const [now, setNow] = useState<Date | null>(null);
