@@ -559,60 +559,87 @@ export type Database = {
       employes: {
         Row: {
           adresse: string | null
+          banque: string | null
+          categorie_personnel: string
+          contrat_path: string | null
           created_at: string | null
           date_embauche: string | null
           date_naissance: string | null
           departement: string | null
+          dossier_path: string | null
           email: string | null
           fonction: string | null
           id: string
           legacy_id: string | null
           matricule: string
+          niveau_etudes: string | null
           nom: string
+          numero_compte: string | null
           prenom: string | null
+          profil: string | null
+          responsable: string | null
           salaire_base: number | null
           sexe: string | null
           statut: string | null
           telephone: string | null
           updated_at: string | null
+          user_id: string | null
         }
         Insert: {
           adresse?: string | null
+          banque?: string | null
+          categorie_personnel?: string
+          contrat_path?: string | null
           created_at?: string | null
           date_embauche?: string | null
           date_naissance?: string | null
           departement?: string | null
+          dossier_path?: string | null
           email?: string | null
           fonction?: string | null
           id?: string
           legacy_id?: string | null
           matricule: string
+          niveau_etudes?: string | null
           nom: string
+          numero_compte?: string | null
           prenom?: string | null
+          profil?: string | null
+          responsable?: string | null
           salaire_base?: number | null
           sexe?: string | null
           statut?: string | null
           telephone?: string | null
           updated_at?: string | null
+          user_id?: string | null
         }
         Update: {
           adresse?: string | null
+          banque?: string | null
+          categorie_personnel?: string
+          contrat_path?: string | null
           created_at?: string | null
           date_embauche?: string | null
           date_naissance?: string | null
           departement?: string | null
+          dossier_path?: string | null
           email?: string | null
           fonction?: string | null
           id?: string
           legacy_id?: string | null
           matricule?: string
+          niveau_etudes?: string | null
           nom?: string
+          numero_compte?: string | null
           prenom?: string | null
+          profil?: string | null
+          responsable?: string | null
           salaire_base?: number | null
           sexe?: string | null
           statut?: string | null
           telephone?: string | null
           updated_at?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }
