@@ -1180,6 +1180,36 @@ export type Database = {
         }
         Relationships: []
       }
+      imputations: {
+        Row: {
+          code: string
+          created_at: string
+          description: string
+          id: string
+          legacy_id: number | null
+          statut: string
+          updated_at: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          description: string
+          id?: string
+          legacy_id?: number | null
+          statut?: string
+          updated_at?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          description?: string
+          id?: string
+          legacy_id?: number | null
+          statut?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       intervenants: {
         Row: {
           contact: string | null
@@ -1230,6 +1260,75 @@ export type Database = {
             columns: ["responsable_id"]
             isOneToOne: false
             referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      livre_banque: {
+        Row: {
+          auteur_id: string | null
+          auteur_nom: string | null
+          created_at: string
+          credit: number
+          date_entree: string
+          debit: number
+          est_entree: boolean
+          id: string
+          imputation_id: string | null
+          legacy_id: number | null
+          libelle: string
+          nom_operant: string | null
+          solde: number
+          statut: string
+          updated_at: string
+        }
+        Insert: {
+          auteur_id?: string | null
+          auteur_nom?: string | null
+          created_at?: string
+          credit?: number
+          date_entree?: string
+          debit?: number
+          est_entree?: boolean
+          id?: string
+          imputation_id?: string | null
+          legacy_id?: number | null
+          libelle: string
+          nom_operant?: string | null
+          solde?: number
+          statut?: string
+          updated_at?: string
+        }
+        Update: {
+          auteur_id?: string | null
+          auteur_nom?: string | null
+          created_at?: string
+          credit?: number
+          date_entree?: string
+          debit?: number
+          est_entree?: boolean
+          id?: string
+          imputation_id?: string | null
+          legacy_id?: number | null
+          libelle?: string
+          nom_operant?: string | null
+          solde?: number
+          statut?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "livre_banque_auteur_id_fkey"
+            columns: ["auteur_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "livre_banque_imputation_id_fkey"
+            columns: ["imputation_id"]
+            isOneToOne: false
+            referencedRelation: "imputations"
             referencedColumns: ["id"]
           },
         ]
