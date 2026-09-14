@@ -6,6 +6,7 @@ import { ORG_NAME } from "@/lib/modules";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import logoAsset from "@/assets/cnac-logo.png.asset.json";
 
 export const Route = createFileRoute("/auth")({
   ssr: false,
@@ -20,6 +21,8 @@ export const Route = createFileRoute("/auth")({
       { name: "robots", content: "noindex" },
       { property: "og:title", content: "Connexion — CNAC MURIMA W'ISANGI" },
       { property: "og:description", content: "Espace de gestion réservé au personnel autorisé." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
     ],
   }),
   component: AuthPage,
@@ -54,6 +57,11 @@ function AuthPage() {
     <div className="grid min-h-screen lg:grid-cols-2">
       <div className="hidden flex-col justify-between bg-sidebar p-12 text-sidebar-foreground lg:flex">
         <div>
+          <img
+            src={logoAsset.url}
+            alt="Logo de CNAC MURIMA W'ISANGI"
+            className="mb-8 size-32 rounded-md bg-background object-contain p-2"
+          />
           <p className="text-xs font-semibold tracking-[0.25em] uppercase opacity-60">
             Système intégré de gestion
           </p>
@@ -72,6 +80,11 @@ function AuthPage() {
       <div className="flex items-center justify-center px-4 py-16">
         <div className="w-full max-w-sm">
           <div className="lg:hidden">
+            <img
+              src={logoAsset.url}
+              alt="Logo de CNAC MURIMA W'ISANGI"
+              className="mb-6 size-28 rounded-md border border-border bg-background object-contain p-2"
+            />
             <p className="text-xs font-semibold tracking-[0.25em] text-muted-foreground uppercase">
               Système de gestion
             </p>
