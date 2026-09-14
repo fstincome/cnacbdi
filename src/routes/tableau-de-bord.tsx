@@ -2,13 +2,20 @@ import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import {
   AlertTriangle,
+  Archive,
   ArrowRight,
   BarChart3,
   Boxes,
+  CalendarClock,
   Car,
   ClipboardList,
+  FolderKanban,
   Fuel,
+  Handshake,
+  ListChecks,
   PackageX,
+  Target,
+  Users,
   Wrench,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
