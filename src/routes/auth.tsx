@@ -76,15 +76,16 @@ function AuthPage() {
         <div>
           <p className="text-xs opacity-60">Accès strictement réservé au personnel autorisé.</p>
           <p className="mt-3 text-[11px] opacity-50">
-            © {new Date().getFullYear()} SIGHT AFRICA — Développé par{" "}
+            Copy rights© CNAC BURUNDI 2026, Tous droits reserves — Développé par{" "}
             <a
               href="https://www.sightnetwork.org"
               target="_blank"
               rel="noopener noreferrer"
               className="underline hover:text-sidebar-foreground"
             >
-              www.sightnetwork.org
-            </a>
+              SIGHT AFRICA
+            </a>{" "}
+            (www.sightnetwork.org) en interne
           </p>
         </div>
       </div>
@@ -136,20 +137,17 @@ function AuthPage() {
             </Button>
           </form>
 
-          <p className="mt-6 text-xs text-muted-foreground">
-            La création de compte n'est pas ouverte au public. Les accès sont délivrés par
-            l'administrateur du système.
-          </p>
-          <p className="mt-4 text-[11px] text-muted-foreground/70">
-            © {new Date().getFullYear()} SIGHT AFRICA — Développé par{" "}
+          <p className="mt-6 text-[11px] text-muted-foreground/70">
+            Copy rights© CNAC BURUNDI 2026, Tous droits reserves — Développé par{" "}
             <a
               href="https://www.sightnetwork.org"
               target="_blank"
               rel="noopener noreferrer"
               className="underline hover:text-foreground"
             >
-              www.sightnetwork.org
-            </a>
+              SIGHT AFRICA
+            </a>{" "}
+            (www.sightnetwork.org) en interne
           </p>
         </div>
       </div>
