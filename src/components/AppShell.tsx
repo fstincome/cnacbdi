@@ -6,6 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { GROUPS, ORG_NAME, modulesOfGroup } from "@/lib/modules";
 import { useMyAccess } from "@/lib/access";
 import { Button } from "@/components/ui/button";
+import { TopBar } from "@/components/TopBar";
 import { cn } from "@/lib/utils";
 
 export function AppShell({ children }: { children: ReactNode }) {
