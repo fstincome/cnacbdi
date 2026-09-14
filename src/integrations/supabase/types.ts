@@ -263,9 +263,14 @@ export type Database = {
           created_at: string | null
           exercice: string | null
           id: string
+          intitule: string | null
           legacy_id: string | null
           montant_alloue: number | null
           montant_depense: number | null
+          montant_prevu: number
+          montant_realise: number
+          service: string | null
+          statut: string
           updated_at: string | null
         }
         Insert: {
@@ -273,9 +278,14 @@ export type Database = {
           created_at?: string | null
           exercice?: string | null
           id?: string
+          intitule?: string | null
           legacy_id?: string | null
           montant_alloue?: number | null
           montant_depense?: number | null
+          montant_prevu?: number
+          montant_realise?: number
+          service?: string | null
+          statut?: string
           updated_at?: string | null
         }
         Update: {
@@ -283,43 +293,66 @@ export type Database = {
           created_at?: string | null
           exercice?: string | null
           id?: string
+          intitule?: string | null
           legacy_id?: string | null
           montant_alloue?: number | null
           montant_depense?: number | null
+          montant_prevu?: number
+          montant_realise?: number
+          service?: string | null
+          statut?: string
           updated_at?: string | null
         }
         Relationships: []
       }
       carburant: {
         Row: {
+          bon: string | null
           created_at: string | null
           date_operation: string | null
+          date_service: string
           id: string
+          kilometrage: number
           legacy_id: string | null
+          litres: number
           montant: number | null
+          prix_total: number
           quantite: number | null
+          station: string | null
           type_operation: string | null
           updated_at: string | null
           vehicule_id: string | null
         }
         Insert: {
+          bon?: string | null
           created_at?: string | null
           date_operation?: string | null
+          date_service?: string
           id?: string
+          kilometrage?: number
           legacy_id?: string | null
+          litres?: number
           montant?: number | null
+          prix_total?: number
           quantite?: number | null
+          station?: string | null
           type_operation?: string | null
           updated_at?: string | null
           vehicule_id?: string | null
         }
         Update: {
+          bon?: string | null
           created_at?: string | null
           date_operation?: string | null
+          date_service?: string
           id?: string
+          kilometrage?: number
           legacy_id?: string | null
+          litres?: number
           montant?: number | null
+          prix_total?: number
           quantite?: number | null
+          station?: string | null
           type_operation?: string | null
           updated_at?: string | null
           vehicule_id?: string | null
@@ -563,6 +596,126 @@ export type Database = {
           },
         ]
       }
+      departements: {
+        Row: {
+          code: string | null
+          created_at: string
+          description: string | null
+          id: string
+          legacy_id: string | null
+          nom: string
+          statut: string
+          updated_at: string
+        }
+        Insert: {
+          code?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom: string
+          statut?: string
+          updated_at?: string
+        }
+        Update: {
+          code?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom?: string
+          statut?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      details_paie: {
+        Row: {
+          allocations_familiales: number
+          created_at: string
+          deductions: number
+          employe_id: string
+          id: string
+          indemnite_deplacement: number
+          indemnite_logement: number
+          inss_3: number
+          inss_4: number
+          inss_6: number
+          ipr: number
+          legacy_id: string | null
+          montant_supporte: number
+          mutuelle_4: number
+          mutuelle_6: number
+          revenu_net_imposable: number
+          salaire_base: number
+          salaire_brut: number
+          salaire_id: string
+          salaire_net: number
+          updated_at: string
+        }
+        Insert: {
+          allocations_familiales?: number
+          created_at?: string
+          deductions?: number
+          employe_id: string
+          id?: string
+          indemnite_deplacement?: number
+          indemnite_logement?: number
+          inss_3?: number
+          inss_4?: number
+          inss_6?: number
+          ipr?: number
+          legacy_id?: string | null
+          montant_supporte?: number
+          mutuelle_4?: number
+          mutuelle_6?: number
+          revenu_net_imposable?: number
+          salaire_base?: number
+          salaire_brut?: number
+          salaire_id: string
+          salaire_net?: number
+          updated_at?: string
+        }
+        Update: {
+          allocations_familiales?: number
+          created_at?: string
+          deductions?: number
+          employe_id?: string
+          id?: string
+          indemnite_deplacement?: number
+          indemnite_logement?: number
+          inss_3?: number
+          inss_4?: number
+          inss_6?: number
+          ipr?: number
+          legacy_id?: string | null
+          montant_supporte?: number
+          mutuelle_4?: number
+          mutuelle_6?: number
+          revenu_net_imposable?: number
+          salaire_base?: number
+          salaire_brut?: number
+          salaire_id?: string
+          salaire_net?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "details_paie_employe_id_fkey"
+            columns: ["employe_id"]
+            isOneToOne: false
+            referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "details_paie_salaire_id_fkey"
+            columns: ["salaire_id"]
+            isOneToOne: true
+            referencedRelation: "salaires"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       dossiers_archives: {
         Row: {
           actif: boolean
@@ -600,9 +753,11 @@ export type Database = {
           date_embauche: string | null
           date_naissance: string | null
           departement: string | null
+          departement_id: string | null
           dossier_path: string | null
           email: string | null
           fonction: string | null
+          fonction_id: string | null
           id: string
           legacy_id: string | null
           matricule: string
@@ -611,8 +766,10 @@ export type Database = {
           numero_compte: string | null
           prenom: string | null
           profil: string | null
+          profil_id: string | null
           responsable: string | null
           salaire_base: number | null
+          service: string | null
           sexe: string | null
           statut: string | null
           telephone: string | null
@@ -628,9 +785,11 @@ export type Database = {
           date_embauche?: string | null
           date_naissance?: string | null
           departement?: string | null
+          departement_id?: string | null
           dossier_path?: string | null
           email?: string | null
           fonction?: string | null
+          fonction_id?: string | null
           id?: string
           legacy_id?: string | null
           matricule: string
@@ -639,8 +798,10 @@ export type Database = {
           numero_compte?: string | null
           prenom?: string | null
           profil?: string | null
+          profil_id?: string | null
           responsable?: string | null
           salaire_base?: number | null
+          service?: string | null
           sexe?: string | null
           statut?: string | null
           telephone?: string | null
@@ -656,9 +817,11 @@ export type Database = {
           date_embauche?: string | null
           date_naissance?: string | null
           departement?: string | null
+          departement_id?: string | null
           dossier_path?: string | null
           email?: string | null
           fonction?: string | null
+          fonction_id?: string | null
           id?: string
           legacy_id?: string | null
           matricule?: string
@@ -667,15 +830,39 @@ export type Database = {
           numero_compte?: string | null
           prenom?: string | null
           profil?: string | null
+          profil_id?: string | null
           responsable?: string | null
           salaire_base?: number | null
+          service?: string | null
           sexe?: string | null
           statut?: string | null
           telephone?: string | null
           updated_at?: string | null
           user_id?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "employes_departement_id_fkey"
+            columns: ["departement_id"]
+            isOneToOne: false
+            referencedRelation: "departements"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "employes_fonction_id_fkey"
+            columns: ["fonction_id"]
+            isOneToOne: false
+            referencedRelation: "fonctions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "employes_profil_id_fkey"
+            columns: ["profil_id"]
+            isOneToOne: false
+            referencedRelation: "profils"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       entretiens: {
         Row: {
@@ -683,8 +870,10 @@ export type Database = {
           created_at: string | null
           date_entretien: string | null
           description: string | null
+          garage: string | null
           id: string
           legacy_id: string | null
+          nature: string | null
           prestataire: string | null
           statut: string | null
           type_entretien: string | null
@@ -696,8 +885,10 @@ export type Database = {
           created_at?: string | null
           date_entretien?: string | null
           description?: string | null
+          garage?: string | null
           id?: string
           legacy_id?: string | null
+          nature?: string | null
           prestataire?: string | null
           statut?: string | null
           type_entretien?: string | null
@@ -709,8 +900,10 @@ export type Database = {
           created_at?: string | null
           date_entretien?: string | null
           description?: string | null
+          garage?: string | null
           id?: string
           legacy_id?: string | null
+          nature?: string | null
           prestataire?: string | null
           statut?: string | null
           type_entretien?: string | null
@@ -799,6 +992,158 @@ export type Database = {
           },
         ]
       }
+      fiches_paie_mensuelles: {
+        Row: {
+          annee: number
+          auteur_id: string | null
+          auteur_nom: string | null
+          created_at: string
+          document_url: string | null
+          id: string
+          legacy_id: string | null
+          modificateur_id: string | null
+          modificateur_nom: string | null
+          mois: number
+          statut: string
+          updated_at: string
+        }
+        Insert: {
+          annee: number
+          auteur_id?: string | null
+          auteur_nom?: string | null
+          created_at?: string
+          document_url?: string | null
+          id?: string
+          legacy_id?: string | null
+          modificateur_id?: string | null
+          modificateur_nom?: string | null
+          mois: number
+          statut?: string
+          updated_at?: string
+        }
+        Update: {
+          annee?: number
+          auteur_id?: string | null
+          auteur_nom?: string | null
+          created_at?: string
+          document_url?: string | null
+          id?: string
+          legacy_id?: string | null
+          modificateur_id?: string | null
+          modificateur_nom?: string | null
+          mois?: number
+          statut?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fiches_paie_mensuelles_auteur_id_fkey"
+            columns: ["auteur_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "fiches_paie_mensuelles_modificateur_id_fkey"
+            columns: ["modificateur_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      fiches_terrain: {
+        Row: {
+          association: string | null
+          colline: string | null
+          commune: string | null
+          cooperative: string | null
+          created_at: string
+          date_adhesion: string | null
+          federation: string | null
+          id: string
+          nom: string
+          prenom: string | null
+          province: string | null
+          telephone: string | null
+          union_nom: string | null
+          zone: string | null
+        }
+        Insert: {
+          association?: string | null
+          colline?: string | null
+          commune?: string | null
+          cooperative?: string | null
+          created_at?: string
+          date_adhesion?: string | null
+          federation?: string | null
+          id?: string
+          nom: string
+          prenom?: string | null
+          province?: string | null
+          telephone?: string | null
+          union_nom?: string | null
+          zone?: string | null
+        }
+        Update: {
+          association?: string | null
+          colline?: string | null
+          commune?: string | null
+          cooperative?: string | null
+          created_at?: string
+          date_adhesion?: string | null
+          federation?: string | null
+          id?: string
+          nom?: string
+          prenom?: string | null
+          province?: string | null
+          telephone?: string | null
+          union_nom?: string | null
+          zone?: string | null
+        }
+        Relationships: []
+      }
+      fonctions: {
+        Row: {
+          created_at: string
+          departement_id: string | null
+          description: string | null
+          id: string
+          legacy_id: string | null
+          nom: string
+          statut: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          departement_id?: string | null
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom: string
+          statut?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          departement_id?: string | null
+          description?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom?: string
+          statut?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fonctions_departement_id_fkey"
+            columns: ["departement_id"]
+            isOneToOne: false
+            referencedRelation: "departements"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       fournisseurs: {
         Row: {
           adresse: string | null
@@ -832,6 +1177,36 @@ export type Database = {
           nom?: string
           telephone?: string | null
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      imputations: {
+        Row: {
+          code: string
+          created_at: string
+          description: string
+          id: string
+          legacy_id: number | null
+          statut: string
+          updated_at: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          description: string
+          id?: string
+          legacy_id?: number | null
+          statut?: string
+          updated_at?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          description?: string
+          id?: string
+          legacy_id?: number | null
+          statut?: string
+          updated_at?: string
         }
         Relationships: []
       }
@@ -885,6 +1260,75 @@ export type Database = {
             columns: ["responsable_id"]
             isOneToOne: false
             referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      livre_banque: {
+        Row: {
+          auteur_id: string | null
+          auteur_nom: string | null
+          created_at: string
+          credit: number
+          date_entree: string
+          debit: number
+          est_entree: boolean
+          id: string
+          imputation_id: string | null
+          legacy_id: number | null
+          libelle: string
+          nom_operant: string | null
+          solde: number
+          statut: string
+          updated_at: string
+        }
+        Insert: {
+          auteur_id?: string | null
+          auteur_nom?: string | null
+          created_at?: string
+          credit?: number
+          date_entree?: string
+          debit?: number
+          est_entree?: boolean
+          id?: string
+          imputation_id?: string | null
+          legacy_id?: number | null
+          libelle: string
+          nom_operant?: string | null
+          solde?: number
+          statut?: string
+          updated_at?: string
+        }
+        Update: {
+          auteur_id?: string | null
+          auteur_nom?: string | null
+          created_at?: string
+          credit?: number
+          date_entree?: string
+          debit?: number
+          est_entree?: boolean
+          id?: string
+          imputation_id?: string | null
+          legacy_id?: number | null
+          libelle?: string
+          nom_operant?: string | null
+          solde?: number
+          statut?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "livre_banque_auteur_id_fkey"
+            columns: ["auteur_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "livre_banque_imputation_id_fkey"
+            columns: ["imputation_id"]
+            isOneToOne: false
+            referencedRelation: "imputations"
             referencedColumns: ["id"]
           },
         ]
@@ -1040,10 +1484,14 @@ export type Database = {
           email: string | null
           id: string
           legacy_id: string | null
+          localisation: string | null
+          logo_path: string | null
           nom: string
+          objet_collaboration: string | null
           statut: string | null
           telephone: string | null
           updated_at: string | null
+          website_url: string | null
         }
         Insert: {
           adresse?: string | null
@@ -1053,10 +1501,14 @@ export type Database = {
           email?: string | null
           id?: string
           legacy_id?: string | null
+          localisation?: string | null
+          logo_path?: string | null
           nom: string
+          objet_collaboration?: string | null
           statut?: string | null
           telephone?: string | null
           updated_at?: string | null
+          website_url?: string | null
         }
         Update: {
           adresse?: string | null
@@ -1066,10 +1518,14 @@ export type Database = {
           email?: string | null
           id?: string
           legacy_id?: string | null
+          localisation?: string | null
+          logo_path?: string | null
           nom?: string
+          objet_collaboration?: string | null
           statut?: string | null
           telephone?: string | null
           updated_at?: string | null
+          website_url?: string | null
         }
         Relationships: []
       }
@@ -1117,12 +1573,46 @@ export type Database = {
           },
         ]
       }
+      profil_module_access: {
+        Row: {
+          created_at: string
+          id: string
+          module_slug: string
+          profil_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          module_slug: string
+          profil_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          module_slug?: string
+          profil_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profil_module_access_profil_id_fkey"
+            columns: ["profil_id"]
+            isOneToOne: false
+            referencedRelation: "profils"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           created_at: string | null
           email: string | null
           full_name: string | null
           id: string
+          nom_complet: string | null
+          service: string | null
           updated_at: string | null
         }
         Insert: {
@@ -1130,6 +1620,8 @@ export type Database = {
           email?: string | null
           full_name?: string | null
           id?: string
+          nom_complet?: string | null
+          service?: string | null
           updated_at?: string | null
         }
         Update: {
@@ -1137,9 +1629,52 @@ export type Database = {
           email?: string | null
           full_name?: string | null
           id?: string
+          nom_complet?: string | null
+          service?: string | null
           updated_at?: string | null
         }
         Relationships: []
+      }
+      profils: {
+        Row: {
+          created_at: string
+          description: string | null
+          fonction_id: string | null
+          id: string
+          legacy_id: string | null
+          nom: string
+          statut: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          fonction_id?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom: string
+          statut?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          fonction_id?: string | null
+          id?: string
+          legacy_id?: string | null
+          nom?: string
+          statut?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profils_fonction_id_fkey"
+            columns: ["fonction_id"]
+            isOneToOne: false
+            referencedRelation: "fonctions"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       programmes: {
         Row: {
@@ -1149,8 +1684,10 @@ export type Database = {
           date_fin: string | null
           description: string | null
           id: string
+          intitule: string | null
           legacy_id: string | null
           nom: string
+          objectifs: string | null
           statut: string | null
           updated_at: string | null
         }
@@ -1161,8 +1698,10 @@ export type Database = {
           date_fin?: string | null
           description?: string | null
           id?: string
+          intitule?: string | null
           legacy_id?: string | null
           nom: string
+          objectifs?: string | null
           statut?: string | null
           updated_at?: string | null
         }
@@ -1173,57 +1712,189 @@ export type Database = {
           date_fin?: string | null
           description?: string | null
           id?: string
+          intitule?: string | null
           legacy_id?: string | null
           nom?: string
+          objectifs?: string | null
           statut?: string | null
           updated_at?: string | null
         }
         Relationships: []
       }
+      projet_activites: {
+        Row: {
+          activite: string
+          budget: number
+          created_at: string
+          date_debut: string
+          date_fin: string
+          engagement_path: string | null
+          id: string
+          projet_id: string
+          responsable_id: string
+          updated_at: string
+        }
+        Insert: {
+          activite: string
+          budget?: number
+          created_at?: string
+          date_debut: string
+          date_fin: string
+          engagement_path?: string | null
+          id?: string
+          projet_id: string
+          responsable_id: string
+          updated_at?: string
+        }
+        Update: {
+          activite?: string
+          budget?: number
+          created_at?: string
+          date_debut?: string
+          date_fin?: string
+          engagement_path?: string | null
+          id?: string
+          projet_id?: string
+          responsable_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "projet_activites_projet_id_fkey"
+            columns: ["projet_id"]
+            isOneToOne: false
+            referencedRelation: "projets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "projet_activites_responsable_id_fkey"
+            columns: ["responsable_id"]
+            isOneToOne: false
+            referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projet_participants: {
+        Row: {
+          created_at: string
+          date_attribution: string
+          employe_id: string
+          id: string
+          projet_id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          date_attribution?: string
+          employe_id: string
+          id?: string
+          projet_id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          date_attribution?: string
+          employe_id?: string
+          id?: string
+          projet_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "projet_participants_employe_id_fkey"
+            columns: ["employe_id"]
+            isOneToOne: false
+            referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "projet_participants_projet_id_fkey"
+            columns: ["projet_id"]
+            isOneToOne: false
+            referencedRelation: "projets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       projets: {
         Row: {
+          avancement: number
           budget: number | null
+          budget_depense: number
+          budget_restant: number
+          chef_projet_id: string | null
           created_at: string | null
           date_debut: string | null
           date_fin: string | null
           description: string | null
+          fichier_path: string | null
           id: string
           legacy_id: string | null
           nom: string
+          objectifs: string | null
           partenaire_id: string | null
           programme_id: string | null
+          responsable: string | null
           statut: string | null
+          titre: string | null
           updated_at: string | null
+          zone: string | null
         }
         Insert: {
+          avancement?: number
           budget?: number | null
+          budget_depense?: number
+          budget_restant?: number
+          chef_projet_id?: string | null
           created_at?: string | null
           date_debut?: string | null
           date_fin?: string | null
           description?: string | null
+          fichier_path?: string | null
           id?: string
           legacy_id?: string | null
           nom: string
+          objectifs?: string | null
           partenaire_id?: string | null
           programme_id?: string | null
+          responsable?: string | null
           statut?: string | null
+          titre?: string | null
           updated_at?: string | null
+          zone?: string | null
         }
         Update: {
+          avancement?: number
           budget?: number | null
+          budget_depense?: number
+          budget_restant?: number
+          chef_projet_id?: string | null
           created_at?: string | null
           date_debut?: string | null
           date_fin?: string | null
           description?: string | null
+          fichier_path?: string | null
           id?: string
           legacy_id?: string | null
           nom?: string
+          objectifs?: string | null
           partenaire_id?: string | null
           programme_id?: string | null
+          responsable?: string | null
           statut?: string | null
+          titre?: string | null
           updated_at?: string | null
+          zone?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "projets_chef_projet_id_fkey"
+            columns: ["chef_projet_id"]
+            isOneToOne: false
+            referencedRelation: "employes"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "projets_partenaire_id_fkey"
             columns: ["partenaire_id"]
@@ -1266,45 +1937,64 @@ export type Database = {
       }
       salaires: {
         Row: {
+          auteur_id: string | null
           avance: number | null
           created_at: string | null
           employe_id: string | null
+          etat_civil: string
           id: string
           mois: string | null
           montant_brut: number | null
           montant_net: number | null
+          nombre_enfants: number
           primes: number | null
           retenues: number | null
+          salaire_base: number
           statut: string | null
           updated_at: string | null
         }
         Insert: {
+          auteur_id?: string | null
           avance?: number | null
           created_at?: string | null
           employe_id?: string | null
+          etat_civil?: string
           id?: string
           mois?: string | null
           montant_brut?: number | null
           montant_net?: number | null
+          nombre_enfants?: number
           primes?: number | null
           retenues?: number | null
+          salaire_base?: number
           statut?: string | null
           updated_at?: string | null
         }
         Update: {
+          auteur_id?: string | null
           avance?: number | null
           created_at?: string | null
           employe_id?: string | null
+          etat_civil?: string
           id?: string
           mois?: string | null
           montant_brut?: number | null
           montant_net?: number | null
+          nombre_enfants?: number
           primes?: number | null
           retenues?: number | null
+          salaire_base?: number
           statut?: string | null
           updated_at?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "salaires_auteur_id_fkey"
+            columns: ["auteur_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "salaires_employe_id_fkey"
             columns: ["employe_id"]
@@ -1479,36 +2169,48 @@ export type Database = {
       }
       vehicules: {
         Row: {
+          affectation: string | null
           annee: number | null
+          chauffeur: string | null
           created_at: string | null
           id: string
           immatriculation: string
+          kilometrage: number
           legacy_id: string | null
           marque: string | null
           modele: string | null
           statut: string | null
+          type_vehicule: string | null
           updated_at: string | null
         }
         Insert: {
+          affectation?: string | null
           annee?: number | null
+          chauffeur?: string | null
           created_at?: string | null
           id?: string
           immatriculation: string
+          kilometrage?: number
           legacy_id?: string | null
           marque?: string | null
           modele?: string | null
           statut?: string | null
+          type_vehicule?: string | null
           updated_at?: string | null
         }
         Update: {
+          affectation?: string | null
           annee?: number | null
+          chauffeur?: string | null
           created_at?: string | null
           id?: string
           immatriculation?: string
+          kilometrage?: number
           legacy_id?: string | null
           marque?: string | null
           modele?: string | null
           statut?: string | null
+          type_vehicule?: string | null
           updated_at?: string | null
         }
         Relationships: []

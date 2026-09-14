@@ -1,0 +1,14 @@
+ALTER TABLE public.employes ADD COLUMN IF NOT EXISTS service text;
+ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS nom_complet text, ADD COLUMN IF NOT EXISTS service text;
+UPDATE public.profiles SET nom_complet = full_name WHERE nom_complet IS NULL;
+ALTER TABLE public.budgets ADD COLUMN IF NOT EXISTS intitule text, ADD COLUMN IF NOT EXISTS montant_prevu numeric NOT NULL DEFAULT 0, ADD COLUMN IF NOT EXISTS montant_realise numeric NOT NULL DEFAULT 0, ADD COLUMN IF NOT EXISTS service text, ADD COLUMN IF NOT EXISTS statut text NOT NULL DEFAULT 'Actif';
+UPDATE public.budgets SET montant_prevu = COALESCE(montant_alloue, 0), montant_realise = COALESCE(montant_depense, 0), intitule = COALESCE(intitule, categorie, 'Budget');
+ALTER TABLE public.carburant ADD COLUMN IF NOT EXISTS date_service date NOT NULL DEFAULT CURRENT_DATE, ADD COLUMN IF NOT EXISTS kilometrage numeric NOT NULL DEFAULT 0, ADD COLUMN IF NOT EXISTS litres numeric NOT NULL DEFAULT 0, ADD COLUMN IF NOT EXISTS prix_total numeric NOT NULL DEFAULT 0, ADD COLUMN IF NOT EXISTS station text, ADD COLUMN IF NOT EXISTS bon text;
+UPDATE public.carburant SET date_service = COALESCE(date_operation, CURRENT_DATE), litres = COALESCE(quantite, 0), prix_total = COALESCE(montant, 0);
+ALTER TABLE public.vehicules ADD COLUMN IF NOT EXISTS affectation text, ADD COLUMN IF NOT EXISTS chauffeur text, ADD COLUMN IF NOT EXISTS kilometrage numeric NOT NULL DEFAULT 0, ADD COLUMN IF NOT EXISTS type_vehicule text;
+ALTER TABLE public.entretiens ADD COLUMN IF NOT EXISTS nature text, ADD COLUMN IF NOT EXISTS garage text;
+UPDATE public.entretiens SET nature = COALESCE(nature, type_entretien), garage = COALESCE(garage, prestataire);
+ALTER TABLE public.programmes ADD COLUMN IF NOT EXISTS intitule text;
+UPDATE public.programmes SET intitule = COALESCE(intitule, nom);
+ALTER TABLE public.projets ADD COLUMN IF NOT EXISTS titre text, ADD COLUMN IF NOT EXISTS avancement numeric NOT NULL DEFAULT 0, ADD COLUMN IF NOT EXISTS responsable text, ADD COLUMN IF NOT EXISTS zone text;
+UPDATE public.projets SET titre = COALESCE(titre, nom);
