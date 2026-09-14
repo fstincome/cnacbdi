@@ -127,6 +127,13 @@ export type Database = {
             referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "archives_dossier_id_fkey"
+            columns: ["dossier_id"]
+            isOneToOne: false
+            referencedRelation: "dossiers_archives"
+            referencedColumns: ["id"]
+          },
         ]
       }
       articles: {
@@ -555,6 +562,33 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      dossiers_archives: {
+        Row: {
+          actif: boolean
+          created_at: string
+          id: string
+          legacy_id: string | null
+          nom: string
+          updated_at: string
+        }
+        Insert: {
+          actif?: boolean
+          created_at?: string
+          id?: string
+          legacy_id?: string | null
+          nom: string
+          updated_at?: string
+        }
+        Update: {
+          actif?: boolean
+          created_at?: string
+          id?: string
+          legacy_id?: string | null
+          nom?: string
+          updated_at?: string
+        }
+        Relationships: []
       }
       employes: {
         Row: {
