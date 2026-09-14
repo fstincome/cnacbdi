@@ -6,7 +6,7 @@ import { ORG_NAME } from "@/lib/modules";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import logoAsset from "@/assets/cnac-logo.png.asset.json";
+import logoUrl from "@/assets/cnac-logo.png";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
