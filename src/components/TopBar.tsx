@@ -50,7 +50,7 @@ export function TopBar() {
   const [saving, setSaving] = useState(false);
 
   const email = user?.email ?? "";
-  const nom = (user?.user_metadata?.nom_complet as string | undefined) ?? email;
+  const nom = (user?.user_metadata?.['nom_complet'] as string | undefined) ?? email;
   const initials = (nom || "?").trim().slice(0, 2).toUpperCase();
 
   async function signOut() {
@@ -72,7 +72,6 @@ export function TopBar() {
     setSaving(true);
     const { error } = await supabase.auth.updateUser({
       password: next,
-      // @ts-expect-error current_password est requis par Lovable Cloud
       current_password: current,
     });
     setSaving(false);
